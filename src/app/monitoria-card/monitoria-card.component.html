@@ -1,0 +1,26 @@
+<div class="col-lg-4">
+    <div class="card card-margin">
+        <div class="card-header no-border">
+            <h5 class="card-title">Monitoria</h5>
+        </div>
+        <div class="card-body pt-0">
+            <div class="widget-49">
+                <div class="widget-49-title-wrapper">
+                    <div class="widget-49-date-primary">
+                        <span class="widget-49-date-day">{{diaMonitoria}}</span>
+                        <span class="widget-49-date-month">{{mesMonitoria}}</span>
+                    </div>
+                    <div class="widget-49-meeting-info">
+                        <span class="widget-49-pro-title">Sala A220</span>
+                        <span class="widget-49-meeting-time">Horário: {{monitoria.horario}}</span>
+                        <!--<span class="widget-49-meeting-time">13:00 às 14:40 Hrs</span>-->
+                        <span class="widget-49-meeting-time">Monitor: {{monitoria.nomeMonitor}}</span>
+                    </div>
+                </div>
+                <div class="widget-49-meeting-action">
+                    <a [routerLink]="['/details', monitoria.id]" class="btn btn-sm btn-flash-border-success">Ver lista de presença</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

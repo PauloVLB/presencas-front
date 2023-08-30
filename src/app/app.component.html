@@ -1,0 +1,20 @@
+<main>
+    <header class="brand-name">
+        <a [routerLink]="['/']">
+            <img class="brand-logo" src="/assets/logo.svg" alt="logo" aria-hidden="true" title="Voltar para página de monitorias">
+        </a>
+        
+        <a [routerLink]="['/']" class="go-right">
+            <img class="brand-logo" src="/assets/add-aluno.svg" title="Cadastrar Aluno(s)" aria-hidden="true">
+        </a>
+
+        <a [routerLink]="['/']" class="go-right">
+            <img class="brand-logo" src="/assets/add.svg" title="Nova Monitoria" aria-hidden="true">
+        </a>
+        
+    </header>
+    
+    <section class="content">
+        <router-outlet></router-outlet>
+    </section>
+</main>

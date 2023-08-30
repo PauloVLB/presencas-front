@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="row">
+      <div class="col-lg-12 card-margin">
+          <div class="card search-form">
+              <div class="card-body p-0">
+                  <form id="search-form">
+                      <div class="row">
+                          <div class="col-12">
+                              <div class="row no-gutters">
+                                  <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                                      <select (change)="mudarIcone()" class="form-control" id="exampleFormControlSelect1">
+                                            <option value="">Adicionar Presença</option>
+                                            <option value="">Pesquisar Aluno</option>
+                                      </select>
+                                  </div>
+                                  <div class="col-lg-8 col-md-6 col-sm-12 p-0">
+                                      <input type="text" [placeholder]='buscarAluno ? "Pesquisar aluno..." : "Adicionar presença..."'  class="form-control" id="search" name="search">
+                                  </div>
+                                  <div class="col-lg-1 col-md-3 col-sm-12 p-0">
+                                      <button type="submit" class="btn btn-base">
+                                          <svg *ngIf="buscarAluno" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                          <svg *ngIf="!buscarAluno" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15"><path fill="currentColor" fill-rule="evenodd" d="M7 7V1h1v6h6v1H8v6H7V8H1V7h6Z" clip-rule="evenodd"/></svg> 
+                                        </button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="row">
+          <div class="col-12">
+              <div class="card card-margin">
+                  <div class="card-body">
+                      <div class="row search-body">
+                          <div class="col-lg-12">
+                              <div class="search-result">
+                                  <div class="result-body">
+                                      <div class="table-responsive">
+                                          <table class="table widget-26">
+                                              <tbody>
+                                                <tr *ngFor="let aluno of alunos">
+                                                    <td>
+                                                        <div class="widget-26-job-emp-img">
+                                                            <span [attr.data-letters]="getInitials(aluno.nome)"></span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="widget-26-job-title">
+                                                            <a href="#">{{aluno.nome}}</a>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="widget-26-job-category bg-soft-base">
+                                                            <span>Turma: {{aluno.turma}}</span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="widget-26-job-starred">
+                                                            <a [routerLink]="" (click)="removerAluno(aluno.id)">
+                                                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 4H8l-7 8l7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm-3 5l-6 6m0-6l6 6"/></svg>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                              </tbody>
+                                          </table>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>

@@ -3,24 +3,36 @@
       <div class="col-lg-12 card-margin">
           <div class="card search-form">
               <div class="card-body p-0">
-                  <form id="search-form">
+                  <form [formGroup]="formPesquisarAluno" (submit)="pesquisarAluno(); $event.preventDefault()" id="search-form">
                       <div class="row">
                           <div class="col-12">
                               <div class="row no-gutters">
                                   <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                      <select (change)="mudarIcone()" class="form-control" id="exampleFormControlSelect1">
+                                      <select (change)="mudarOpcaoPesquisa()" class="form-control" id="exampleFormControlSelect1">
                                             <option value="">Adicionar Presença</option>
                                             <option value="">Pesquisar Aluno</option>
                                       </select>
                                   </div>
                                   <div class="col-lg-8 col-md-6 col-sm-12 p-0">
-                                      <input type="text" [placeholder]='buscarAluno ? "Pesquisar aluno..." : "Adicionar presença..."'  class="form-control" id="search" name="search">
-                                  </div>
+                                      <input list="alunos-list" 
+                                            type="text" 
+                                            [placeholder]='buscarAluno ? "Pesquisar aluno..." : "Adicionar presença..."'  
+                                            class="form-control" 
+                                            id="nome-aluno"
+                                            name="nome-aluno"
+                                            formControlName="nomeAluno"
+                                            >
+                                      <datalist id="alunos-list">
+                                        <option *ngFor="let aluno of autocompleteAlunos" 
+                                                [value]="aluno.nome"
+                                                >
+                                      </datalist> 
+                                    </div>
                                   <div class="col-lg-1 col-md-3 col-sm-12 p-0">
                                       <button type="submit" class="btn btn-base">
                                           <svg *ngIf="buscarAluno" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                                           <svg *ngIf="!buscarAluno" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15"><path fill="currentColor" fill-rule="evenodd" d="M7 7V1h1v6h6v1H8v6H7V8H1V7h6Z" clip-rule="evenodd"/></svg> 
-                                        </button>
+                                      </button>
                                   </div>
                               </div>
                           </div>
@@ -41,7 +53,7 @@
                                       <div class="table-responsive">
                                           <table class="table widget-26">
                                               <tbody>
-                                                <tr *ngFor="let aluno of alunos">
+                                                <tr *ngFor="let aluno of alunosMonitoria">
                                                     <td>
                                                         <div class="widget-26-job-emp-img">
                                                             <span [attr.data-letters]="getInitials(aluno.nome)"></span>

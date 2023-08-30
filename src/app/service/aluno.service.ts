@@ -9,7 +9,7 @@ export class AlunoService {
   constructor() { }
   readonly apiUrl: string = 'http://localhost:8080';
 
-  async getAllAlunoHttp(): Promise<Aluno[]> {
+  async getAllAlunosHttp(): Promise<Aluno[]> {
     const response = await fetch(`${this.apiUrl}/aluno`, {
       method: 'GET'
     });
@@ -17,7 +17,7 @@ export class AlunoService {
     return aluno;
   }
 
-  async getMonitoriaByIdHttp(id: number): Promise<Aluno> {
+  async getAlunoByIdHttp(id: number): Promise<Aluno> {
     const response = await fetch(`${this.apiUrl}/aluno/${id}`, {
       method: 'GET'
     });
@@ -25,9 +25,16 @@ export class AlunoService {
     return aluno;
   }
 
-  async removeAluno(idMonitoria: number | undefined, idAluno: number): Promise<boolean> {
+  async removePresencaAluno(idMonitoria: number | undefined, idAluno: number): Promise<boolean> {
     await fetch(`${this.apiUrl}/monitoria/${idMonitoria}/aluno/${idAluno}`, {
       method: 'DELETE'
+    });
+    return true;
+  }
+
+  async adicionarPresencaAluno(idMonitoria: number | undefined, idAluno: number | undefined): Promise<boolean> {
+    await fetch(`${this.apiUrl}/monitoria/${idMonitoria}/aluno/${idAluno}`, {
+      method: 'POST'
     });
     return true;
   }
